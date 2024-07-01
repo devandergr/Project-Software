@@ -2,10 +2,10 @@ package com.example.platform.models;
 
 import java.util.List;
 
-public class Customer extends User {
+public class Lawyer extends User {
     private List<Message> messages;
-    public Customer(){
-        this.setUserType(UserType.CUSTOMER);
+    public Lawyer(){
+        this.setUserType(UserType.LAWYER);
     }
 
     // Methods
