@@ -1,4 +1,4 @@
-package com.example.platform.services;
+package com.example.platform.Services;
 
 import com.example.platform.models.Message;
 import com.example.platform.models.Customer;
