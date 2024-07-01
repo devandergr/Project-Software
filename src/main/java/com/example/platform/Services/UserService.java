@@ -1,4 +1,4 @@
 package com.example.platform.Services;
 
-public class UsuarioService {
+public class UserService {
 }

@@ -1,2 +1,4 @@
-package com.example.platform.Services;public class CustomUserDetailsService {
+package com.example.platform.Services;
+
+public class CustomUserDetailsService {
 }

@@ -1,2 +1,4 @@
-package com.example.platform.Services;public class SesionService {
+package com.example.platform.Services;
+
+public class SesionService {
 }

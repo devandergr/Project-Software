@@ -1,2 +1,4 @@
-package com.example.platform.repositories;public class SesionRepository {
+package com.example.platform.repositories;
+
+public class SesionRepository {
 }
