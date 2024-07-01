@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.platform.repositories.UserRepository;
+import com.example.platform.utils.JwtUtil;
+import com.example.platform.services.CustomUserDetailsService;
 
 @RestController
 @RequestMapping("/auth")
@@ -19,10 +22,10 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private CustomUserDetatilsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtUtil jwtUtil;
 
     @Autowired
     private UserRepository userRepository;
@@ -35,7 +38,7 @@ public class AuthController {
             throw new Exception("Incorrect email or password", e);
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
-        final String jwt = jwtUtils.generateToken(userDetails);
+        final String jwt = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(jwt);
     }
 
@@ -44,4 +47,5 @@ public class AuthController {
         userRepository.save(user);
         return ResponseEntity.ok("User registered successfully");
     }
+
 }

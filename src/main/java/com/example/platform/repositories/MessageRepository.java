@@ -1,4 +1,2 @@
-package com.example.platform.repositories;
-
-public class MessageRepository {
+package com.example.platform.repositories;public class MessageRepository {
 }

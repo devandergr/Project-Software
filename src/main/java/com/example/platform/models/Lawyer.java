@@ -1,7 +1,10 @@
 package com.example.platform.models;
 
+import jakarta.persistence.Entity;
+
 import java.util.List;
 
+@Entity
 public class Lawyer extends User {
     private List<Message> messages;
     private String area;
