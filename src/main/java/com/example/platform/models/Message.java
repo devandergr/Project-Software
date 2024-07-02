@@ -10,8 +10,15 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "customerId")
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "lawyerId")
     private Lawyer lawyer;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateSending;
 

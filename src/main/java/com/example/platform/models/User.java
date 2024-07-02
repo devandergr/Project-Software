@@ -2,21 +2,27 @@ package com.example.platform.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
+
     private String first_name;
     private String last_name;
-    @Column(nullable = false, unique = true)
     private String email;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    @OneToMany(mappedBy = "id")
+    private List<Session> sessions;
 
     public User() {
     }
@@ -78,6 +84,14 @@ public class User {
         this.userType = userType;
     }
 
+    public List<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -87,6 +101,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userType=" + userType +
+                ", sessions=" + sessions +
                 '}';
     }
 }

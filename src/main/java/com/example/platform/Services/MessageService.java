@@ -1,4 +1,4 @@
-package com.example.platform.Services;
+package com.example.platform.services;
 
 import com.example.platform.models.Message;
 import com.example.platform.models.Customer;
@@ -36,3 +36,4 @@ public class MessageService {
         return messageRepository.findByCustomer(customer);
     }
 }
+
