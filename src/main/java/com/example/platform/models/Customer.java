@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Customer extends User {
 
-    @OneToMany(mappedBy = "customerId")
+    @OneToMany(mappedBy = "customer")
     private List<Message> messages;
     public Customer(){
         this.setUserType(UserType.CUSTOMER);

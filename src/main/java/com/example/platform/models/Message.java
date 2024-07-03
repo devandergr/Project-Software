@@ -11,11 +11,12 @@ public class Message {
     private Long id;
     private String description;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lawyerId")
     private Lawyer lawyer;
 

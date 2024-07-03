@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.platform.repositories.UserRepository;
 import com.example.platform.utils.JwtUtil;
-import com.example.platform.Services.CustomUserDetailsService;
+import com.example.platform.services.CustomUserDetailsService;
 
 @RestController
 @RequestMapping("/auth")

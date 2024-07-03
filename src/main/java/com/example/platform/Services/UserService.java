@@ -1,4 +1,4 @@
-package com.example.platform.Services;
+package com.example.platform.services;
 
 import com.example.platform.models.User;
 import com.example.platform.repositories.UserRepository;

@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Lawyer extends User {
 
-    @OneToMany(mappedBy = "lawyerId")
+    @OneToMany(mappedBy = "lawyer")
     private List<Message> messages;
     private String area;
     private String experience;
