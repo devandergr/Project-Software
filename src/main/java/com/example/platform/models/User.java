@@ -86,4 +86,20 @@ public class User {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Lawyer getLawyer() {
+        return lawyer;
+    }
+
+    public void setLawyer(Lawyer lawyer) {
+        this.lawyer = lawyer;
+    }
 }

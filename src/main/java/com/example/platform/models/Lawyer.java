@@ -10,13 +10,13 @@ public class Lawyer{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
 
-    private String specialty;
+    private String speciality;
     private int experience;
     private double averageRating;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "lawyer_id")
     private User user;
 
     public Long getUserID() {
@@ -24,7 +24,7 @@ public class Lawyer{
     }
 
     public String getSpecialty() {
-        return specialty;
+        return speciality;
     }
 
     public int getExperience() {
@@ -44,7 +44,7 @@ public class Lawyer{
     }
 
     public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+        this.speciality = specialty;
     }
 
     public void setExperience(int experience) {
