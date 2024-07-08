@@ -14,8 +14,22 @@ public class Lawyer extends User {
     private String experience;
     private Double scoreAverage;
 
+<<<<<<< Updated upstream
     public Lawyer(){
         this.setUserType(UserType.LAWYER);
+=======
+    private String specialty;
+    private int experience;
+    private double averageRating;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "userID")
+    private User user;
+
+    public Long getUserID() {
+        return userID;
+>>>>>>> Stashed changes
     }
 
     // Methods

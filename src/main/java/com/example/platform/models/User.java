@@ -1,7 +1,12 @@
 package com.example.platform.models;
 
+<<<<<<< Updated upstream
 import jakarta.persistence.*;
 
+=======
+
+import javax.persistence.*;
+>>>>>>> Stashed changes
 import java.util.List;
 import java.util.Set;
 
@@ -11,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long id;
+    private Long ID;
 
     private String first_name;
     private String last_name;
@@ -27,6 +32,7 @@ public class User {
     public User() {
     }
 
+<<<<<<< Updated upstream
     public User(String first_name, String last_name, String email, String password, UserType userType) {
         this.first_name = first_name;
         this.last_name = last_name;
@@ -34,13 +40,23 @@ public class User {
         this.password = password;
         this.userType = userType;
     }
+=======
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Customer customer;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Lawyer lawyer;
+
+    // Getters y Setters
+>>>>>>> Stashed changes
+
 
     public Long getId() {
-        return id;
+        return ID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long ID) {
+        this.ID = ID;
     }
 
     public String getFirst_name() {
@@ -102,5 +118,21 @@ public class User {
                 ", userType=" + userType +
                 ", sessions=" + sessions +
                 '}';
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Lawyer getLawyer() {
+        return lawyer;
+    }
+
+    public void setLawyer(Lawyer lawyer) {
+        this.lawyer = lawyer;
     }
 }

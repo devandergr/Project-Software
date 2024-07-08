@@ -45,4 +45,22 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/auth/register").permitAll()
+                .anyRequest().permitAll();
+    }
+>>>>>>> Stashed changes
 }
