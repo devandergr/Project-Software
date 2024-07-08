@@ -1,31 +1,34 @@
+/*
 package com.example.platform.controllers;
 
 import com.example.platform.models.Customer;
 import com.example.platform.models.Lawyer;
 import com.example.platform.models.Message;
-import com.example.platform.repositories.MessageRepository;
+import com.example.platform.services.MessageService
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
     @Autowired
-    private MessageRepository messageRepository;
+    private MessageService messageService;
 
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @PostMapping("/send")
+    @PostMapping()
     public ResponseEntity<?> sendMessage(@RequestBody Message message) {
-        messageRepository.save(message);
-        return ResponseEntity.ok("Message sent successfully");
+        messageService.saveMessage(message);
+        return ResponseEntity.ok("Message saved successfully");
     }
 
     @GetMapping("/customer/{customerId}")
@@ -34,7 +37,7 @@ public class MessageController {
         if (customer == null) {
             return ResponseEntity.notFound().build();
         }
-        List<Message> messages = messageRepository.findByCustomer(customer);
+        List<Message> messages = messageService.getMessageById(customer);
         return ResponseEntity.ok(messages);
     }
 
@@ -48,3 +51,4 @@ public class MessageController {
         return ResponseEntity.ok(messages);
     }
 }
+*/

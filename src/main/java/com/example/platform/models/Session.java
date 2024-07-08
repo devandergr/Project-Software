@@ -1,38 +1,31 @@
 package com.example.platform.models;
-
-<<<<<<< Updated upstream
-import jakarta.persistence.*;
-
-import java.util.Date;
-=======
 import javax.persistence.*;
 import java.time.LocalDateTime;
->>>>>>> Stashed changes
 
 @Entity
 public class Session {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-<<<<<<< Updated upstream
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endDate;
-=======
-    @JoinColumn(name = "userID", nullable = false)
-    private User user;
-
-    public Session() {
-    }
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
 
     public Long getId() {
         return id;
+    }
+
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
+    }
+
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
     }
 
     public User getUser() {
@@ -47,6 +40,12 @@ public class Session {
         this.user = user;
     }
 
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
+    }
+
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
+    }
     // Getters and Setters
->>>>>>> Stashed changes
 }

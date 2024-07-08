@@ -1,14 +1,6 @@
 package com.example.platform.models;
-
-<<<<<<< Updated upstream
-import jakarta.persistence.*;
-
-=======
-
 import javax.persistence.*;
->>>>>>> Stashed changes
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class User {
@@ -16,10 +8,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long ID;
+    private Long id;
 
-    private String first_name;
-    private String last_name;
+    private String name;
     private String email;
     private String password;
 
@@ -29,18 +20,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Session> sessions;
 
-    public User() {
-    }
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Profile profile;
 
-<<<<<<< Updated upstream
-    public User(String first_name, String last_name, String email, String password, UserType userType) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.password = password;
-        this.userType = userType;
-    }
-=======
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Customer customer;
 
@@ -48,31 +30,21 @@ public class User {
     private Lawyer lawyer;
 
     // Getters y Setters
->>>>>>> Stashed changes
-
 
     public Long getId() {
-        return ID;
+        return id;
     }
 
-    public void setId(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getName() {
+        return name;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -107,32 +79,11 @@ public class User {
         this.sessions = sessions;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", userType=" + userType +
-                ", sessions=" + sessions +
-                '}';
+    public Profile getProfile() {
+        return profile;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Lawyer getLawyer() {
-        return lawyer;
-    }
-
-    public void setLawyer(Lawyer lawyer) {
-        this.lawyer = lawyer;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

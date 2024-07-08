@@ -10,6 +10,4 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    List<Message> findByCustomer(Customer customer);
-    List<Message> findByLawyer(Lawyer lawyer);
 }

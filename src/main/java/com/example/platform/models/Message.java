@@ -1,7 +1,7 @@
 package com.example.platform.models;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,12 +11,15 @@ public class Message {
     private Long id;
     private String description;
 
-<<<<<<< Updated upstream
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customerId")
     private Customer customer;
-=======
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lawyerId")
+    private Lawyer lawyer;
+
     @ManyToOne
     @JoinColumn(name = "senderID", nullable = false)
     private User sender;
@@ -24,11 +27,6 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "receiverID", nullable = false)
     private User receiver;
->>>>>>> Stashed changes
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lawyerId")
-    private Lawyer lawyer;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateSending;

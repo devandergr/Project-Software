@@ -18,7 +18,7 @@ public class SessionService {
     }
 
     public List<Session> getSessionByUser(Long userId) {
-        return sessionRepository.findByUserId(userId);
+        return sessionRepository.findAllById(userId);
     }
 
     public void deleteSession(Long sessionId) {
