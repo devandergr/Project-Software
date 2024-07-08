@@ -1,6 +1,7 @@
 package com.example.platform.controllers;
 
 import com.example.platform.models.User;
+import com.example.platform.models.UserType;
 import com.example.platform.repositories.UserRepository;
 import com.example.platform.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,6 @@ public class AuthController {
         authService.registerUser(user);
         return ResponseEntity.ok("User registered successfully");
     }
-/*
-    @PostMapping("/register-lawyer")
-    public ResponseEntity<?> registerLawyer(@RequestBody Lawyer lawyer) {
-        authService.registerLawyer(lawyer);
-        return ResponseEntity.ok("Lawyer registered successfully");
-    }*/
 }
 
 

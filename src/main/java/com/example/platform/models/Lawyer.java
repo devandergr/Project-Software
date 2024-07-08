@@ -3,7 +3,8 @@ package com.example.platform.models;
 import javax.persistence.*;
 
 @Entity
-public class Lawyer {
+
+public class Lawyer{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
