@@ -12,7 +12,7 @@ public class Customer {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "userID")
     private User user;
 
 

@@ -16,7 +16,7 @@ public class Lawyer{
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "lawyer_id")
+    @JoinColumn(name = "userID")
     private User user;
 
     public Long getUserID() {
@@ -43,8 +43,8 @@ public class Lawyer{
         this.userID = userID;
     }
 
-    public void setSpecialty(String specialty) {
-        this.speciality = specialty;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public void setExperience(int experience) {

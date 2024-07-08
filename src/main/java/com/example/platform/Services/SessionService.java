@@ -13,14 +13,14 @@ public class SessionService {
     @Autowired
     private SessionRepository sessionRepository;
 
-    public Session crearSession(Session session) {
-        return sessionRepository.save(session);
+    public void crearSession(Session session) {
+        sessionRepository.save(session);
     }
-
+    /*
     public List<Session> getSessionByUser(Long userId) {
         return sessionRepository.findAllById(userId);
     }
-
+    */
     public void deleteSession(Long sessionId) {
         sessionRepository.deleteById(sessionId);
     }
