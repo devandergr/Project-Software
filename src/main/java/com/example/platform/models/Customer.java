@@ -1,6 +1,5 @@
 package com.example.platform.models;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +7,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Integer userID;
 
     @OneToOne
     @MapsId
@@ -24,11 +23,11 @@ public class Customer {
         this.user = user;
     }
 
-    public Long getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 

@@ -30,7 +30,7 @@ public class AuthService {
     @Transactional
     public void registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        //userRepository.save(user);
         if (user.getUserType() == UserType.Customer) {
             Customer customer = new Customer();
             customer.setUser(user);

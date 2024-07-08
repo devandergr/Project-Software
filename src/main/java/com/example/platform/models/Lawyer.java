@@ -1,5 +1,6 @@
 package com.example.platform.models;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +9,7 @@ public class Lawyer{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Integer userID;
 
     private String speciality;
     private int experience;
@@ -19,7 +20,7 @@ public class Lawyer{
     @JoinColumn(name = "userID")
     private User user;
 
-    public Long getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
@@ -39,7 +40,7 @@ public class Lawyer{
         return user;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 

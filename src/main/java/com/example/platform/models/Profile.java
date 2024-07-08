@@ -7,7 +7,7 @@ import javax.persistence.*;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long userID;
+        private Integer userID;
 
         private String photo;
         private String description;
@@ -18,7 +18,7 @@ import javax.persistence.*;
         @JoinColumn(name = "userID")
         private User user;
 
-     public Long getUserID() {
+     public Integer getUserID() {
          return userID;
      }
 
@@ -42,7 +42,7 @@ import javax.persistence.*;
          this.photo = photo;
      }
 
-     public void setUserID(Long userID) {
+     public void setUserID(Integer userID) {
          this.userID = userID;
      }
 

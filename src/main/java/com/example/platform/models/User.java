@@ -1,4 +1,5 @@
 package com.example.platform.models;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long id;
+    private Integer id;
 
     private String name;
     private String email;
@@ -20,22 +21,24 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Session> sessions;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Profile profile;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    /*
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Customer customer;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Lawyer lawyer;
+    */
 
     // Getters y Setters
 
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -86,7 +89,7 @@ public class User {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-
+    /*
     public Customer getCustomer() {
         return customer;
     }
@@ -102,4 +105,5 @@ public class User {
     public void setLawyer(Lawyer lawyer) {
         this.lawyer = lawyer;
     }
+    */
 }

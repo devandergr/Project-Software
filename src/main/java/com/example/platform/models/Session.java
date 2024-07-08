@@ -7,7 +7,7 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "userID", nullable = false)
@@ -16,7 +16,7 @@ public class Session {
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class Session {
         return user;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
