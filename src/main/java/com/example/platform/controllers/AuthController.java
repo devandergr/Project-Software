@@ -51,6 +51,7 @@ public class AuthController {
         sessionService.crearSession(session);
         return ResponseEntity.ok("Login successful");
     }
+    /*text-comment*/
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Map<String, Object> request) {
