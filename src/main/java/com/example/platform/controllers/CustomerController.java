@@ -1,7 +1,6 @@
 package com.example.platform.controllers;
 
 import com.example.platform.models.Customer;
-import com.example.platform.repositories.CustomerRepository;
 import com.example.platform.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +12,17 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository customerRepository;
 
     @Autowired
     private CustomerService customerService;
 
     @GetMapping("/all")
-    @ResponseBody
-    public ResponseEntity<List<Customer>> getAllSessions(){
+    public ResponseEntity<List<Customer>> getAllCustomers(){
         List<Customer> customers = customerService.getAllCustomers();
+        System.out.println("Retrieved customers: " + customers);
         return ResponseEntity.ok(customers);
     }
 
-    @PostMapping("/create")
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return customerService.saveCustomer(customer);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
@@ -41,8 +34,12 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id){
+    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        Customer customer = customerService.getCustomerById(id);
+        if (customer == null) {
+            throw new ResourceNotFoundException("Customer not found");
+        }
         customerService.deleteCustomer(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Customer with ID " + id + " has been successfully deleted.");
     }
 }

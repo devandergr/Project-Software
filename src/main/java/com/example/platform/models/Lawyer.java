@@ -15,7 +15,7 @@ public class Lawyer {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userID")
     private User user;
 
     public Long getUserID() {

@@ -15,9 +15,6 @@ public class Customer {
     @JoinColumn(name = "userID")
     private User user;
 
-    public Long getUserID() {
-        return userID;
-    }
 
     public User getUser() {
         return user;
@@ -27,8 +24,13 @@ public class Customer {
         this.user = user;
     }
 
+    public Long getUserID() {
+        return userID;
+    }
+
     public void setUserID(Long userID) {
         this.userID = userID;
     }
-    // Getters and Setters
+
+// Getters and Setters
 }

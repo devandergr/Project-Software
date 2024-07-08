@@ -10,7 +10,7 @@ public class Session {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userID", nullable = false)
     private User user;
 
     private LocalDateTime startDateTime;
