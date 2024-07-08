@@ -1,7 +1,9 @@
 package com.example.platform.services;
 
+import com.example.platform.models.Customer;
 import com.example.platform.models.Lawyer;
 import com.example.platform.models.User;
+import com.example.platform.models.UserType;
 import com.example.platform.repositories.CustomerRepository;
 import com.example.platform.repositories.LawyerRepository;
 import com.example.platform.repositories.UserRepository;
@@ -29,14 +31,19 @@ public class AuthService {
     public void registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        if (user.getUserType() == UserType.Customer) {
+            Customer customer = new Customer();
+            customer.setUser(user);
+            customerRepository.save(customer);
         }
+    }
 
     @Transactional
     public void registerLawyer(User user, String speciality, int experience, double averageRating) {
         registerUser(user);
         Lawyer lawyer = new Lawyer();
         lawyer.setUser(user);
-        lawyer.setSpecialty(speciality);
+        lawyer.setSpeciality(speciality);
         lawyer.setExperience(experience);
         lawyer.setAverageRating(averageRating);
         lawyerRepository.save(lawyer);
