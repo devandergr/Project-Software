@@ -24,13 +24,8 @@ public class LawyerController {
         return ResponseEntity.ok(lawyers);
     }
 
-    @PostMapping("/create")
-    public Lawyer createLawyer(@RequestBody Lawyer lawyer) {
-        return lawyerService.saveLawyer(lawyer);
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<Lawyer> getLawyerById(@PathVariable Long id) {
+    public ResponseEntity<Lawyer> getLawyerById(@PathVariable Integer id) {
         Lawyer lawyer = lawyerService.getLawyerById(id);
         if (lawyer == null) {
             throw new ResourceNotFoundException("Lawyer not found");
@@ -38,9 +33,12 @@ public class LawyerController {
         return ResponseEntity.ok(lawyer);
     }
 
+    @PutMapping("/update")
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLawyer(@PathVariable Long id){
+    public ResponseEntity<Void> deleteLawyer(@PathVariable Integer id){
         lawyerService.deleteLawyer(id);
         return ResponseEntity.noContent().build();
     }
+
 }

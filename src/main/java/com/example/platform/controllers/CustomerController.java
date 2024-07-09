@@ -25,7 +25,7 @@ public class CustomerController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id) {
         Customer customer = customerService.getCustomerById(id);
         if (customer == null) {
             throw new ResourceNotFoundException("Customer not found");
@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<String> deleteCustomer(@PathVariable Integer id) {
         Customer customer = customerService.getCustomerById(id);
         if (customer == null) {
             throw new ResourceNotFoundException("Customer not found");
