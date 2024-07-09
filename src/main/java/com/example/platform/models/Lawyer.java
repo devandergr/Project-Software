@@ -1,6 +1,5 @@
 package com.example.platform.models;
 
-
 import javax.persistence.*;
 
 @Entity

@@ -21,11 +21,11 @@ public class LawyerService {
         return lawyerRepository.findAll();
     }
 
-    public Lawyer getLawyerById(Long id) {
+    public Lawyer getLawyerById(Integer id) {
         return lawyerRepository.findById(id).orElse(null);
     }
 
-    public void deleteLawyer(Long id) {
+    public void deleteLawyer(Integer id) {
         lawyerRepository.deleteById(id);
     }
 }

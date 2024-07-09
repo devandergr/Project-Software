@@ -21,7 +21,7 @@ public class SessionService {
         return sessionRepository.findAllById(userId);
     }
     */
-    public void deleteSession(Long sessionId) {
+    public void deleteSession(Integer sessionId) {
         sessionRepository.deleteById(sessionId);
     }
 }

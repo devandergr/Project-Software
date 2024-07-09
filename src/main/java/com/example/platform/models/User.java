@@ -23,16 +23,12 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Profile profile;
-    /*
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Customer customer;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Lawyer lawyer;
-    */
-
-    // Getters y Setters
-
 
     public Integer getId() {
         return id;
@@ -89,7 +85,7 @@ public class User {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-    /*
+
     public Customer getCustomer() {
         return customer;
     }
@@ -105,5 +101,5 @@ public class User {
     public void setLawyer(Lawyer lawyer) {
         this.lawyer = lawyer;
     }
-    */
+
 }

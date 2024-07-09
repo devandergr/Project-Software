@@ -21,11 +21,11 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
-    public Message getMessageById(Long id) {
+    public Message getMessageById(Integer id) {
         return messageRepository.findById(id).orElse(null);
     }
 
-    public void deleteMessage(Long id) {
+    public void deleteMessage(Integer id) {
         messageRepository.deleteById(id);
     }
 }

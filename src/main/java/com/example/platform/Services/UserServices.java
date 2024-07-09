@@ -18,12 +18,12 @@ public class UserServices {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(Integer userId) {
         userRepository.deleteById(userId);
     }
 }
