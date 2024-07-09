@@ -1,11 +1,9 @@
 package com.example.platform.services;
 
-import com.example.platform.models.Customer;
-import com.example.platform.models.Lawyer;
-import com.example.platform.models.User;
-import com.example.platform.models.UserType;
+import com.example.platform.models.*;
 import com.example.platform.repositories.CustomerRepository;
 import com.example.platform.repositories.LawyerRepository;
+import com.example.platform.repositories.ProfileRepository;
 import com.example.platform.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,9 @@ public class AuthService {
     private LawyerRepository lawyerRepository;
 
     @Autowired
+    private ProfileRepository profileRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Transactional
@@ -35,6 +36,10 @@ public class AuthService {
             Customer customer = new Customer();
             customer.setUser(user);
             customerRepository.save(customer);
+
+            Profile profile = new Profile();
+            profile.setUser(user);
+            profileRepository.save(profile);
         }
     }
 
@@ -47,6 +52,10 @@ public class AuthService {
         lawyer.setExperience(experience);
         lawyer.setAverageRating(averageRating);
         lawyerRepository.save(lawyer);
+
+        Profile profile = new Profile();
+        profile.setUser(user);
+        profileRepository.save(profile);
     }
 
 }

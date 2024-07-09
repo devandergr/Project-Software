@@ -4,7 +4,7 @@ package com.example.platform.controllers;
 import com.example.platform.models.Customer;
 import com.example.platform.models.Lawyer;
 import com.example.platform.models.Message;
-import com.example.platform.services.MessageService
+import com.example.platform.services.MessageService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +50,4 @@ public class MessageController {
         List<Message> messages = messageRepository.findByLawyer(lawyer);
         return ResponseEntity.ok(messages);
     }
-}
-*/
+}*/
