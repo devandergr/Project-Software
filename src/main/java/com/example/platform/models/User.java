@@ -1,5 +1,6 @@
 package com.example.platform.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -20,15 +21,19 @@ public class User {
     private UserType userType;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private List<Session> sessions;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonManagedReference
     private Profile profile;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonManagedReference
     private Customer customer;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonManagedReference
     private Lawyer lawyer;
 
     public Integer getId() {

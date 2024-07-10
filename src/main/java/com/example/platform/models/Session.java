@@ -1,4 +1,5 @@
 package com.example.platform.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ public class Session {
 
     @ManyToOne
     @JoinColumn(name = "userID", nullable = false)
+    @JsonBackReference
     private User user;
 
     private LocalDateTime startDateTime;

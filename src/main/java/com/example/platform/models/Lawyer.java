@@ -1,5 +1,6 @@
 package com.example.platform.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Lawyer{
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @MapsId
     @JoinColumn(name = "userID")
+    @JsonBackReference
     private User user;
 
     public Integer getUserID() {

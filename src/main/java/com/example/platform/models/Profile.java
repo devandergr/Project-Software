@@ -1,6 +1,7 @@
 package com.example.platform.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
  @Entity
     public class Profile {
@@ -16,6 +17,7 @@ import jakarta.persistence.*;
         @OneToOne
         @MapsId
         @JoinColumn(name = "userID")
+        @JsonBackReference
         private User user;
 
      public Integer getUserID() {
