@@ -1,6 +1,6 @@
 package com.example.platform.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Customer {
@@ -9,7 +9,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userID;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @MapsId
     @JoinColumn(name = "userID")
     private User user;

@@ -5,11 +5,15 @@ import com.example.platform.models.User;
 import com.example.platform.models.UserType;
 import com.example.platform.repositories.UserRepository;
 import com.example.platform.services.AuthService;
+import com.example.platform.services.JwtUtilService;
 import com.example.platform.services.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +32,17 @@ public class AuthController {
     private UserRepository userRepository;
 
     @Autowired
+    JwtUtilService jwtUtilService;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthService authService;
+
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Autowired
     private SessionService sessionService;
@@ -40,16 +51,21 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody User user) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(user.getEmail());
+
+            // Generar token
+            String jwt = this.jwtUtilService.generateToken(userDetails);
+
+            //Crear la sesión
+            User loggedInuser = userRepository.findByEmail(user.getEmail());
+            Session session = new Session();
+            session.setUser(loggedInuser);
+            session.setStartDateTime(LocalDateTime.now());
+            sessionService.crearSession(session);
+            return new ResponseEntity<>(jwt, HttpStatus.OK);
         } catch (Exception e) {
-            throw new Exception("Incorrect email or password", e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication Error");
         }
-        //Crear la sesión
-        User loggedInuser = userRepository.findByEmail(user.getEmail());
-        Session session = new Session();
-        session.setUser(loggedInuser);
-        session.setStartDateTime(LocalDateTime.now());
-        sessionService.crearSession(session);
-        return ResponseEntity.ok("Login successful");
     }
     /*text-comment*/
 

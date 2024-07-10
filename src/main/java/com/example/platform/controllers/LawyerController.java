@@ -25,10 +25,10 @@ public class LawyerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lawyer> getLawyerById(@PathVariable Integer id) {
+    public ResponseEntity<Lawyer> getLawyerById(@PathVariable("id") Integer id) {
         Lawyer lawyer = lawyerService.getLawyerById(id);
         if (lawyer == null) {
-            throw new ResourceNotFoundException("Lawyer not found");
+            throw new ResourceNotFoundException("Lawyer Not Found");
         }
         return ResponseEntity.ok(lawyer);
     }
@@ -36,7 +36,11 @@ public class LawyerController {
     @PutMapping("/update")
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLawyer(@PathVariable Integer id){
+    public ResponseEntity<Void> deleteLawyer(@PathVariable("id") Integer id){
+        Lawyer lawyer = lawyerService.getLawyerById(id);
+        if (lawyer == null) {
+            throw new ResourceNotFoundException("Lawyer Not Found");
+        }
         lawyerService.deleteLawyer(id);
         return ResponseEntity.noContent().build();
     }

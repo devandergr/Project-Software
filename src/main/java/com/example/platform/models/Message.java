@@ -1,7 +1,7 @@
 package com.example.platform.models;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity

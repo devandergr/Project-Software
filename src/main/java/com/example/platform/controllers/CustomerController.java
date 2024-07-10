@@ -25,21 +25,21 @@ public class CustomerController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Integer id) {
         Customer customer = customerService.getCustomerById(id);
         if (customer == null) {
-            throw new ResourceNotFoundException("Customer not found");
+            throw new ResourceNotFoundException("Customer Not Found");
         }
         return ResponseEntity.ok(customer);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteCustomer(@PathVariable("id") Integer id) {
         Customer customer = customerService.getCustomerById(id);
         if (customer == null) {
-            throw new ResourceNotFoundException("Customer not found");
+            throw new ResourceNotFoundException("Customer Not Found");
         }
         customerService.deleteCustomer(id);
-        return ResponseEntity.ok("Customer with ID " + id + " has been successfully deleted.");
+        return ResponseEntity.noContent().build();
     }
 }

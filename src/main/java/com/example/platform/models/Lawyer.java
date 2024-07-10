@@ -1,6 +1,6 @@
 package com.example.platform.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 
@@ -14,7 +14,7 @@ public class Lawyer{
     private int experience;
     private double averageRating;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @MapsId
     @JoinColumn(name = "userID")
     private User user;
